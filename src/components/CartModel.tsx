@@ -37,7 +37,7 @@ const CartModel = () => {
             
         }
     }
-
+    console.log(cart)
     return (
         <div className='w-max absolute p-4 rounded-md   shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex
       flex-col gap-6 z-20 '>
@@ -95,7 +95,7 @@ const CartModel = () => {
                     <div className=''>
                         <div className='flex items-center justify-between font-semibold'>
                             <span className=''>Toplam</span>
-                            <span className=''>{cart.subtotal?.amount}$</span>
+                            <span className=''>{(cart as any).subtotal?.amount}$</span>
                         </div>
                         <p className='text-gray-500 text-sm mt-2 mb-4'>
                             Kargo ve Vergiler Ödemede hesaplanıcakdır

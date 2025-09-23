@@ -52,8 +52,8 @@ const CustomizeProducts = ({ productId, variants, productOptions }: {
     });
   };
 
-  console.log(selectedOptions)
-  console.log(variants)
+  // console.log(selectedOptions)
+  // console.log(variants)
 
 
   return (
