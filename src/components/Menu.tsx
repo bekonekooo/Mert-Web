@@ -121,7 +121,7 @@ export default function Menu() {
                   pathname === "/login" ? "bg-white text-black" : "hover:bg-white/10"
                 }`}
               >
-                Login
+                Giriş
               </Link>
             )}
 

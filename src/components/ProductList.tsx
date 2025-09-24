@@ -8,6 +8,36 @@ import Pagination from "./Pagination";
 
 const PRODUCT_PER_PAGE = 100;
 
+/* ===========================
+   1) HELPERS  (YENİ)
+   =========================== */
+// HTML etiketlerini temizle + normalize
+const stripHtml = (html?: string) =>
+  (html || "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+// URL'den info.* filtrelerini topla (örn: info.Cam Rengi=Füme Aynalı)
+const collectInfoFilters = (searchParams?: Record<string, any>) => {
+  const out: Array<{ title: string; value: string }> = [];
+  if (!searchParams) return out;
+
+  for (const [k, v] of Object.entries(searchParams)) {
+    if (!k.startsWith("info.")) continue;
+
+    // value string veya string[] olabilir -> string'e indir
+    const rawVal =
+      typeof v === "string" ? v : Array.isArray(v) ? v[0] ?? "" : "";
+    if (!rawVal || rawVal.trim() === "") continue;
+
+    // "info." sonrası başlık
+    const title = k.slice(5).trim().toLowerCase();
+    out.push({ title, value: rawVal.trim().toLowerCase() });
+  }
+  return out;
+};
+
 const ProductList = async ({
   categoryId,
   limit,
@@ -30,31 +60,71 @@ const ProductList = async ({
     .gt("priceData.price", searchParams?.min || 0)
     .lt("priceData.price", searchParams?.max || 999999)
     .limit(limit || PRODUCT_PER_PAGE)
-    .skip(searchParams?.page ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE) : 0);
+    .skip(
+      searchParams?.page
+        ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
+        : 0
+    );
 
-  // Sıralama
+  // Sıralama (mevcut halinle bıraktım)
   if (searchParams?.sort) {
-    const [sortType, sortBy] = searchParams.sort.split(" ");
-
-    // Wix'in desteklediği alanlar
+    const [sortType, sortBy] = String(searchParams.sort).split(" ");
     const validFields = ["name", "price", "lastUpdated", "createdDate"];
-
     if (sortBy && validFields.includes(sortBy)) {
-      if (sortType === "asc") {
-        productQuery = productQuery.ascending(sortBy);
-      } else if (sortType === "desc") {
-        productQuery = productQuery.descending(sortBy);
+      if (sortBy === "price") {
+        // price için nested alanı kullanmak daha sağlıklı
+        productQuery =
+          sortType === "desc"
+            ? productQuery.descending("priceData.price" as any)
+            : productQuery.ascending("priceData.price" as any);
+      } else if (sortBy === "createdDate") {
+        // SDK union'ında yoksa cast
+        const createdField = "_createdDate" as any;
+        productQuery =
+          sortType === "desc"
+            ? productQuery.descending(createdField)
+            : productQuery.ascending(createdField);
+      } else {
+        productQuery =
+          sortType === "desc"
+            ? productQuery.descending(sortBy as any)
+            : productQuery.ascending(sortBy as any);
       }
     }
   }
 
   const res = await productQuery.find();
 
-  // console.log(res); 
+  /* ===========================
+     2) POST-FILTER (YENİ)
+     =========================== */
+  let items: any[] = res.items || [];
 
+  // URL’deki info.* paramlarını al
+  const infoFilters = collectInfoFilters(searchParams);
+
+  // Her info filtresi AND ile uygulanır:
+  // title eşleşecek, description (HTML temizlenmiş) içinde value geçecek
+  if (infoFilters.length > 0) {
+    items = items.filter((p: any) =>
+      infoFilters.every(({ title, value }) => {
+        const sec = p.additionalInfoSections?.find(
+          (s: any) => String(s?.title || "").trim().toLowerCase() === title
+        );
+        if (!sec) return false;
+
+        const plain = stripHtml(sec.description).toLowerCase();
+        return plain.includes(value);
+      })
+    );
+  }
+
+  /* ===========================
+     3) RENDER'DA items KULLAN  (DEĞİŞTİ)
+     =========================== */
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
-      {res.items.map((product: products.Product) => (
+      {items.map((product: products.Product) => (
         <Link
           href={"/" + product.slug}
           className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
@@ -69,7 +139,6 @@ const ProductList = async ({
               sizes="25vw"
               className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity ease-in-out duration-500"
             />
-
             {product.media?.items?.[1] && (
               <Image
                 src={product.media.items[1].image?.url || "/product.png"}
@@ -80,33 +149,36 @@ const ProductList = async ({
               />
             )}
           </div>
+
           <div className="flex justify-between">
             <span className="font-medium">{product.name}</span>
             <span className="font-semi-bold">{product.price?.price}₺</span>
           </div>
+
           {product.additionalInfoSections && (
             <div
               className="text-sm text-gray-500"
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(
-                  product.additionalInfoSections.find(
-                    (section: any) => section.title === "shortDesc"
-                  )?.description || "Ürün açıklaması bulunamadı."
+                  product.description || "Ürün açıklaması bulunamadı."
                 ),
               }}
-            ></div>
+            />
           )}
+
           <button className="rounded-2xl ring-1 ring-lama py-2 px-4 w-max text-xs hover:bg-lama hover:text-white">
             Karta Ekle
           </button>
         </Link>
       ))}
-     { searchParams?.cat || searchParams?.name ?  (<Pagination
-       currentPage={res.currentPage || 0 } 
-      hasPrev={res.hasPrev()}
-       hasNext={res.hasNext()}/>)
-       : null 
-       }
+
+      {(searchParams?.cat || searchParams?.name) && (
+        <Pagination
+          currentPage={res.currentPage || 0}
+          hasPrev={res.hasPrev()}
+          hasNext={res.hasNext()}
+        />
+      )}
     </div>
   );
 };
