@@ -32,7 +32,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
         <p className="text-gray-500">{product.description}</p>
         <div className="h-[2px] bg-gray-100" />
         {product.price?.price === product.price?.discountedPrice ? (
-          <h2 className="font-medium text-2xl">${product.price?.price}</h2>
+          <h2 className="font-medium text-2xl">{product.price?.price}₺</h2>
         ) : (
           <div className="flex items-center gap-4">
             <h3 className="text-xl text-gray-500 line-through">
@@ -58,12 +58,20 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
           />
         )}
         <div className="h-[2px] bg-gray-100" />
-        {product.additionalInfoSections?.map((section: any) => (
-          <div className="text-sm" key={section.title}>
-            <h4 className="font-medium mb-4">{section.title}</h4>
-            <p>{section.description}</p>
-          </div>
-        ))}
+      <div className="my-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+  {product.additionalInfoSections?.map((section: any) => (
+    <div
+  key={section.title}
+  className="flex gap-2 items-start bg-white rounded-md border border-gray-100 p-2 hover:shadow-sm transition-shadow"
+>
+  <span className="font-medium text-lama text-xs sm:text-sm w-20">{section.title}:</span>
+  <span
+    className="text-gray-600 text-xs sm:text-sm"
+    dangerouslySetInnerHTML={{ __html: section.description }}
+  />
+</div>
+  ))}
+</div>
         <div className="h-[2px] bg-gray-100" />
         {/* REVIEWS */}
         <h1 className="text-2xl">User Reviews</h1>

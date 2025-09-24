@@ -27,11 +27,11 @@ const Navbar = () => {
             <div className='text-2xl tracking-wide'> OPTİKCE</div>
             </Link>   
             <div className='hidden xl:flex gap-4 '>
-                 <Link href="/" >HomePage</Link>
-                    <Link href="/list" >Shop</Link>
+                 <Link href="/" >AnaSayfa</Link>
+                    <Link href="/list" >Ürünler</Link>
                     {/* <Link href="/" >Deals</Link> */}
-                    <Link href="/" >About</Link>
-                    <Link href="/" >Contact</Link>
+                    <Link href="/about" >Hakkımızda</Link>
+                    <Link href="/contact" >İletişim</Link>
             </div>
             </div>
             {/* RIGHT */}

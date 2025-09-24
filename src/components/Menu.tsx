@@ -9,11 +9,11 @@ import { useWixClient } from "@/hooks/useWixClient";
 import { useCartStore } from "@/hooks/useCartStore";
 
 const LINKS = [
-  { href: "/", label: "HomePage" },
-  { href: "/shop", label: "Shop" },     // gerekirse rotaları kendine göre değiştir
-  { href: "/deals", label: "Deals" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "AnaSayfa" },
+  { href: "/list", label: "Gözlükler" },     // gerekirse rotaları kendine göre değiştir
+ 
+  { href: "/about", label: "Hakkımızda" },
+  { href: "/contact", label: "İletişim" },
 ];
 
 export default function Menu() {
@@ -105,13 +105,13 @@ export default function Menu() {
                     pathname === "/profile" ? "bg-white text-black" : "hover:bg-white/10"
                   }`}
                 >
-                  Profile
+                  Profil
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 rounded-md bg-white text-black"
+                  className="px-4 py-2 rounded-md  text-white"
                 >
-                  Logout
+                  Çıkış
                 </button>
               </>
             ) : (
@@ -131,7 +131,7 @@ export default function Menu() {
               // Eğer ayrı bir cart sayfan yoksa sadece label kalsın ya da NavIcons’taki CartModel’i kullan.
               className="px-4 py-2 rounded-md hover:bg-white/10"
             >
-              Cart ({counter ?? 0})
+              Sepet ({counter ?? 0})
             </Link>
 
             {/* Kapat */}
@@ -140,7 +140,7 @@ export default function Menu() {
               className="mt-4 text-sm text-white/70 hover:text-white"
               aria-label="Close menu"
             >
-              Close
+              Kapat
             </button>
           </div>
         </>

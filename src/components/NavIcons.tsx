@@ -57,7 +57,7 @@ const NavIcons = () => {
         {isProfileOpen &&    <div className=' absolute p-4 rounded-md top-12 left-0 text-sm  bg-white shadow-xl shadow-gray-300 z-20  '>
 
             <Link href="/profile">Profil</Link>
-            <div className='mt-2 cursor-pointer' onClick={handleLogOut}>{ isLoading ? " Cıkış" : "Logout"  }</div>
+            <div className='mt-2 cursor-pointer' onClick={handleLogOut}>{ isLoading ? "Logout" : "Cıkış"  }</div>
 
         </div> }
          <Image src="/notification.png" width={22} height={22} alt=' ' className='cursor-pointer'/>

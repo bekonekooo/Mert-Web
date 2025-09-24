@@ -73,7 +73,7 @@ const toNum = (v: unknown, fb = 0) => {
     return () => {
       alive = false;
     };
-  }, [wixClient, cart?._id]);
+  },[wixClient, cart?._id ,cart]);
 
   const handleCheckout = async () => {
     try {
