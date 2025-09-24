@@ -19,6 +19,7 @@ export default function CartPage() {
     total?: number;
     shipping?: number;
     tax?: number;
+    price?:number;
   }>({});
 
   // Cart'ı yükle
@@ -26,17 +27,26 @@ export default function CartPage() {
     getCart(wixClient);
   }, [wixClient, getCart]);
 
-  // Fallback subtotal (vergisiz, kargosuz)
-  const fallbackSubtotal = useMemo(
-    () =>
-      cart?.lineItems?.reduce((sum, li) => {
-        const price = li.price?.amount ?? 0;
-        const qty = li.quantity ?? 1;
-        return sum + price * qty;
-      }, 0) ?? 0,
-    [cart]
-  );
+  // helpers (dosyanın üstüne ekleyebilirsin)
+const toNum = (v: unknown, fb = 0) => {
+  const n =
+    typeof v === "string" ? parseFloat(v) :
+    typeof v === "number" ? v :
+    NaN;
+  return Number.isFinite(n) ? n : fb;
+};
 
+
+  // Fallback subtotal (vergisiz, kargosuz)
+ const fallbackSubtotal = useMemo(
+  () =>
+    (cart?.lineItems ?? []).reduce((sum, li) => {
+      const price = toNum(li.price?.amount, 0); // <-- kesin number
+      const qty   = toNum(li.quantity, 1);      // <-- kesin number
+      return sum + price * qty;
+    }, 0),
+  [cart]
+);
   // Resmi toplam tahmini (varsa vergi/kargo/indirim dahil)
   useEffect(() => {
     let alive = true;
