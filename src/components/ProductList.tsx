@@ -67,31 +67,45 @@ const ProductList = async ({
     );
 
   // Sıralama (mevcut halinle bıraktım)
-  if (searchParams?.sort) {
-    const [sortType, sortBy] = String(searchParams.sort).split(" ");
-    const validFields = ["name", "price", "lastUpdated", "createdDate"];
-    if (sortBy && validFields.includes(sortBy)) {
-      if (sortBy === "price") {
-        // price için nested alanı kullanmak daha sağlıklı
-        productQuery =
-          sortType === "desc"
-            ? productQuery.descending("priceData.price" as any)
-            : productQuery.ascending("priceData.price" as any);
-      } else if (sortBy === "createdDate") {
-        // SDK union'ında yoksa cast
-        const createdField = "_createdDate" as any;
-        productQuery =
-          sortType === "desc"
-            ? productQuery.descending(createdField)
-            : productQuery.ascending(createdField);
-      } else {
-        productQuery =
-          sortType === "desc"
-            ? productQuery.descending(sortBy as any)
-            : productQuery.ascending(sortBy as any);
-      }
-    }
+ if (searchParams?.sort) {
+  const [dir, uiField] = String(searchParams.sort).split(" ");
+
+  // 1) Fiyat: SORT'tA price kullan (priceData.price DEĞİL!)
+  if (uiField === "price") {
+    const field = "price" as const;
+    productQuery =
+      dir === "desc"
+        ? productQuery.descending(field)
+        : productQuery.ascending(field);
   }
+
+  // 2) lastUpdated
+  else if (uiField === "lastUpdated") {
+    const field = "lastUpdated" as const;
+    productQuery =
+      dir === "desc"
+        ? productQuery.descending(field)
+        : productQuery.ascending(field);
+  }
+
+  // 3) name
+  else if (uiField === "name") {
+    const field = "name" as const;
+    productQuery =
+      dir === "desc"
+        ? productQuery.descending(field)
+        : productQuery.ascending(field);
+  }
+
+  // 4) (opsiyonel) createdDate → bazı projelerde _createdDate çalışır, tip için cast gerekebilir
+  else if (uiField === "createdDate") {
+    const field = "_createdDate" as any;
+    productQuery =
+      dir === "desc"
+        ? productQuery.descending(field)
+        : productQuery.ascending(field);
+  }
+}
 
   const res = await productQuery.find();
 
