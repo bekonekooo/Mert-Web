@@ -6,7 +6,7 @@ import { products } from "@wix/stores";
 import DOMPurify from "isomorphic-dompurify";
 import Pagination from "./Pagination";
 
-const PRODUCT_PER_PAGE = 8;
+const PRODUCT_PER_PAGE = 100;
 
 const ProductList = async ({
   categoryId,
