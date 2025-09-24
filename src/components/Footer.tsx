@@ -11,7 +11,7 @@ const Footer = () => {
         {/* LEFT */}
         <div className='w-full md:w-1/2 lg:w-1/4 flex flex-col gap-5 '>
           <Link href="/">
-            <div className='text-2xl tracking-wide'> OPTİKÇE</div>
+            <div className='text-2xl tracking-wide'> OPTİKCE</div>
           </Link>
           <p>Konyaaltı Caddesi No: 112, Daire: 5, Konyaaltı, Antalya 07070</p>
           <span className='semi-bold'>dogac@eken.com.tr</span>
