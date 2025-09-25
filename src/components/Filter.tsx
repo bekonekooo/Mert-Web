@@ -263,15 +263,7 @@ export default function Filter({ infoTitles = [] }: FilterProps) {
         />
 
         {/* CATEGORY (örnek) */}
-        <select
-          name="cat"
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-          value={get("cat")}
-          onChange={handleFilterChange}
-        >
-          <option value="">Category</option>
-          <option value="all-products">All Products</option>
-        </select>
+      
 
         {/* === DİNAMİK additionalInfoSections alanları === */}
         {infoTitles.map((title) => {
@@ -314,10 +306,7 @@ export default function Filter({ infoTitles = [] }: FilterProps) {
           );
         })}
 
-        {/* dekoratif */}
-        <select className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]">
-          <option>All Filters</option>
-        </select>
+      
       </div>
 
       {/* SORT */}

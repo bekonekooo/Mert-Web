@@ -25,6 +25,7 @@ const wixClient = useWixClient()
   if (isLoggedIn) {
     router.push("/");
   }
+  console.log(isLoggedIn)
 
   const [mode, setMode] = useState<MODE>(MODE.LOGIN)
 
@@ -70,7 +71,7 @@ const wixClient = useWixClient()
           response = await wixClient.auth.login({
             email,
             password,
-          });
+          });  
           break;
         case MODE.REGISTER:
           response = await wixClient.auth.register({

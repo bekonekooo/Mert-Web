@@ -101,7 +101,7 @@ const toNum = (v: unknown, fb = 0) => {
 
   return (
     <main className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 py-10">
-      <h1 className="text-2xl font-semibold mb-6">Your Cart</h1>
+      <h1 className="text-2xl font-semibold mb-6">Sepetiniz</h1>
 
       {!hasItems ? (
         <div className="rounded-md border p-6 text-center">

@@ -52,9 +52,9 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
       <Filter infoTitles={infoTitles} />
 
       {/* PRODUCTS */}
-      <h1 className="mt-12 text-xl font-semibold">
+      {/* <h1 className="mt-12 text-xl font-semibold">
         {cat?.collection?.name || "Products"}
-      </h1>
+      </h1> */}
 
       <Suspense fallback={"Yükleniyor..."}>
         <ProductList
