@@ -41,11 +41,11 @@ const Footer = () => {
   <div className="flex flex-col gap-6 items-center lg:items-start">
     <h1 className="font-medium">Dükkan</h1>
     <div className="flex flex-col gap-3">
-      <Link href="/yeni">Yeni Gelenler</Link>
-      <Link href="/kadin">Kadın</Link>
-      <Link href="/cocuk">Çocuk</Link>
-      <Link href="/erkek">Erkek</Link>
-      <Link href="/tum-urunler">Bütün Ürünler</Link>
+      <Link href="/list?cat=featured">Yeni Gelenler</Link>
+      <Link href="/list?cat=woman">Kadın</Link>
+      <Link href="/list?cat=kid">Çocuk</Link>
+      <Link href="/list?cat=man">Erkek</Link>
+      <Link href="/list?cat=all-products">Bütün Ürünler</Link>
     </div>
   </div>
 </div>
