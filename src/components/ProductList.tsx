@@ -147,12 +147,12 @@ const ProductList = async ({
      =========================== */
 
 return (
-  <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+  <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-16 lg:grid-cols-4">
     {items.map((product: products.Product) => (
       <Link
         href={"/" + product.slug}
         key={product._id}
-        className="w-full sm:w-[45%] lg:w-[22%] group"
+        className="group"
       >
         {/* KART */}
         <div className="h-full flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-shadow duration-200">
@@ -168,12 +168,10 @@ return (
             />
           </div>
 
-          {/* AYIRICI ÇİZGİLER */}
           <div className="mx-4 h-px bg-gray-200" />
 
-          {/* 2) DETAYLAR (Logo + İsim/Fiyat) */}
+          {/* 2) DETAYLAR */}
           <div className="px-4 py-4 flex flex-col items-center gap-3">
-            {/* Logo (2. görsel) */}
             {product.media?.items?.[1]?.image?.url && (
               <div className="flex justify-center">
                 <Image
@@ -186,10 +184,8 @@ return (
               </div>
             )}
 
-            {/* İsim */}
             <span className="font-medium text-center">{product.name}</span>
 
-            {/* Fiyat / İndirimli Fiyat (yan yana) */}
             {product.price?.discountedPrice ? (
               <div className="flex items-center gap-2">
                 <span className="text-gray-500 line-through text-sm">
@@ -204,7 +200,6 @@ return (
             )}
           </div>
 
-          {/* AYIRICI ÇİZGİLER */}
           <div className="mx-4 h-px bg-gray-200" />
 
           {/* 3) BUTON */}
