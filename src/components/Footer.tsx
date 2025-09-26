@@ -32,7 +32,7 @@ const Footer = () => {
       <Link href="/">AnaSayfa</Link>
       <Link href="/about">Hakkımızda</Link>
       <Link href="/list">Ürünler</Link>
-      <Link href="/cantact">İletişim</Link>
+      <Link href="/contact">İletişim</Link>
       <Link href="/mss">MSS</Link>
       <Link href="/kvk">KVK</Link>
     </div>
