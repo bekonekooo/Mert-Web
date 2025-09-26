@@ -248,7 +248,7 @@ export default function Filter({ infoTitles = [] }: FilterProps) {
         <input
           type="text"
           name="min"
-          placeholder="min price"
+          placeholder="min fiyat"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           value={get("min")}
           onChange={handleFilterChange}
@@ -256,7 +256,7 @@ export default function Filter({ infoTitles = [] }: FilterProps) {
         <input
           type="text"
           name="max"
-          placeholder="max price"
+          placeholder="max fiyat"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           value={get("max")}
           onChange={handleFilterChange}
@@ -318,10 +318,10 @@ export default function Filter({ infoTitles = [] }: FilterProps) {
           onChange={handleFilterChange}
         >
           <option value="">Sort By</option>
-          <option value="asc price">Price (low to high)</option>
-          <option value="desc price">Price (high to low)</option>
-          <option value="desc lastUpdated">Newest</option>
-          <option value="asc lastUpdated">Oldest</option>
+          <option value="asc price">Fiyat (düşük den yükseğe)</option>
+          <option value="desc price">Fiyat (yüksek den düşüge)</option>
+          <option value="desc lastUpdated">En Yeni</option>
+          <option value="asc lastUpdated">En Eski</option>
         </select>
       </div>
     </div>

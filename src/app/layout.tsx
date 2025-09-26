@@ -9,7 +9,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "OPTİKCE",
-  description: "A complete e-commerce application with Next.js and Wix",
+  description: "Güvenle gözlük almanın en kolay adresi",
+    icons: {
+    icon: [
+      { url: "/favicon.ico?v=3", type: "image/x-icon" }, // ?v=3 cache-bust
+    ],
+  },
 };
 
 export default function RootLayout({
