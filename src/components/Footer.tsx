@@ -30,9 +30,9 @@ const Footer = () => {
     <h1 className="font-medium">Şirket</h1>
     <div className="flex flex-col gap-3 ">
       <Link href="/">AnaSayfa</Link>
-      <Link href="/hakkimizda">Hakkımızda</Link>
-      <Link href="/urunler">Ürünler</Link>
-      <Link href="/iletisim">İletişim</Link>
+      <Link href="/about">Hakkımızda</Link>
+      <Link href="/list">Ürünler</Link>
+      <Link href="/cantact">İletişim</Link>
       <Link href="/mss">MSS</Link>
       <Link href="/kvk">KVK</Link>
     </div>
