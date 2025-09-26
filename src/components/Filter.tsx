@@ -245,7 +245,7 @@ export default function Filter({ infoTitles = [] }: FilterProps) {
        
 
         {/* PRICE */}
-        <input
+        {/* <input
           type="text"
           name="min"
           placeholder="min fiyat"
@@ -259,8 +259,8 @@ export default function Filter({ infoTitles = [] }: FilterProps) {
           placeholder="max fiyat"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           value={get("max")}
-          onChange={handleFilterChange}
-        />
+          onChange={handleFilterChange}npm
+        /> */}
 
         {/* CATEGORY (örnek) */}
       

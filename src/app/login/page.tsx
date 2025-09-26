@@ -96,39 +96,52 @@ const wixClient = useWixClient()
           break;
       }
 
-      switch (response?.loginState) {
-        case LoginState.SUCCESS:
-          setMessage("Successful! You are being redirected.");
-          const tokens = await wixClient.auth.getMemberTokensForDirectLogin(
-            response.data.sessionToken!
-          );
+     // ================================================
+// PROBLEM: case bloklarında break eksikliği
+//          -> FAILURE durumunda aşağıdaki case’lere de düşüyor
+// ================================================
 
-          Cookies.set("refreshToken", JSON.stringify(tokens.refreshToken), {
-            expires: 2,
-          });
-          wixClient.auth.setTokens(tokens);
-          router.push("/");
-          break;
-        case LoginState.FAILURE:
-          if (
-            response.errorCode === "invalidEmail" ||
-            response.errorCode === "invalidPassword"
-          ) {
-            setError("Invalid email or password!");
-          } else if (response.errorCode === "emailAlreadyExists") {
-            setError("Email already exists!");
-          } else if (response.errorCode === "resetPassword") {
-            setError("You need to reset your password!");
-          } else {
-            setError("Something went wrong!");
-          }
-        case LoginState.EMAIL_VERIFICATION_REQUIRED:
-          setMode(MODE.EMAIL_VERIFICATION);
-        case LoginState.OWNER_APPROVAL_REQUIRED:
-          setMessage("Your account is pending approval");
-        default:
-          break;
-      }
+switch (response?.loginState) {
+  case LoginState.SUCCESS:
+    setMessage("Successful! You are being redirected.");
+    const tokens = await wixClient.auth.getMemberTokensForDirectLogin(
+      response.data.sessionToken!
+    );
+
+    Cookies.set("refreshToken", JSON.stringify(tokens.refreshToken), {
+      expires: 2,
+    });
+    wixClient.auth.setTokens(tokens);
+    router.push("/");
+    break; // ✅ break eklendi
+
+  case LoginState.FAILURE:
+    if (
+      response.errorCode === "invalidEmail" ||
+      response.errorCode === "invalidPassword"
+    ) {
+      setError("Invalid email or password!");
+    } else if (response.errorCode === "emailAlreadyExists") {
+      setError("Email already exists!");
+    } else if (response.errorCode === "resetPassword") {
+      setError("You need to reset your password!");
+    } else {
+      setError("Something went wrong!");
+    }
+    break; // ✅ eksikti, eklendi
+
+  case LoginState.EMAIL_VERIFICATION_REQUIRED:
+    setMode(MODE.EMAIL_VERIFICATION);
+    break; // ✅ eksikti, eklendi
+
+  case LoginState.OWNER_APPROVAL_REQUIRED:
+    setMessage("Your account is pending approval");
+    break; // ✅ eksikti, eklendi
+
+  default:
+    break;
+}
+
     } catch (err) {
       console.log(err);
       setError("Something went wrong!");
