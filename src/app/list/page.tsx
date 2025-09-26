@@ -4,16 +4,13 @@ import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
 import { wixClientServer } from "@/lib/wixClientServer";
 
-const ListPage = async ({ searchParams }: { searchParams: any }) => {
+const ListPage = async ({ searchParams }: { searchParams: Record<string, string> }) => {
   const wixClient = await wixClientServer();
 
-  // Kategori (slug yoksa all-products varsayılan)
   const cat = await wixClient.collections.getCollectionBySlug(
     searchParams.cat || "all-products"
   );
 
-  // === additionalInfoSections başlıklarını topla (ilk sayfadan) ===
-  // İstersen .hasSome("collectionIds", [cat.collection?._id]) kullanabilirsin.
   const metaRes = await wixClient.products
     .queryProducts()
     .eq("collectionIds", cat.collection?._id || "00000000-0000-0000-0000-000000000001")
@@ -48,18 +45,14 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
         </div>
       </div>
 
-      {/* >>> Filter'a başlıkları geçiyoruz */}
       <Filter infoTitles={infoTitles} />
-
-      {/* PRODUCTS */}
-      {/* <h1 className="mt-12 text-xl font-semibold">
-        {cat?.collection?.name || "Products"}
-      </h1> */}
 
       <Suspense fallback={"Yükleniyor..."}>
         <ProductList
           categoryId={cat.collection?._id || "00000000-0000-0000-0000-000000000001"}
           searchParams={searchParams}
+          limit={100}        
+                 
         />
       </Suspense>
     </div>

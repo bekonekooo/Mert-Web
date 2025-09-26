@@ -7,8 +7,12 @@ import DOMPurify from "isomorphic-dompurify";
 import Pagination from "./Pagination";
 
 
-
+const HOME_LIMIT = 12;
+const LIST_LIMIT = 100;
 const PRODUCT_PER_PAGE = 100;
+
+
+
 
 /* ===========================
    1) HELPERS  (YENİ)
@@ -142,71 +146,86 @@ const ProductList = async ({
      3) RENDER'DA items KULLAN  (DEĞİŞTİ)
      =========================== */
 
-  return (
- <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
-  {items.map((product: products.Product) => (
-    <Link
-      href={"/" + product.slug}
-      className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
-      key={product._id}
-    >
-     <div className="relative w-full h-[400px]">
-  {/* Sadece ürünün ana görseli */}
-  <Image
-    src={product.media?.mainMedia?.image?.url || "/product.png"}
-    alt=""
-    fill
-    sizes="25vw"
-    className="object-cover rounded-md"
-  />
-</div>
+return (
+  <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+    {items.map((product: products.Product) => (
+      <Link
+        href={"/" + product.slug}
+        key={product._id}
+        className="w-full sm:w-[45%] lg:w-[22%] group"
+      >
+        {/* KART */}
+        <div className="h-full flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-shadow duration-200">
+          
+          {/* 1) GÖRSEL BÖLÜMÜ */}
+          <div className="relative w-full h-[400px] p-3">
+            <Image
+              src={product.media?.mainMedia?.image?.url || "/product.png"}
+              alt={product.name || "Ürün"}
+              fill
+              sizes="25vw"
+              className="object-contain rounded-md"
+            />
+          </div>
 
-{/* Logo (2. görsel) varsa göster */}
-{product.media?.items?.[1]?.image?.url && (
-  <div className="flex justify-center mt-2">
-    <Image
-      src={product.media.items[1].image.url}
-      alt="Brand Logo"
-      width={80}
-      height={40}
-      className="object-contain"
-    />
+          {/* AYIRICI ÇİZGİLER */}
+          <div className="mx-4 h-px bg-gray-200" />
+
+          {/* 2) DETAYLAR (Logo + İsim/Fiyat) */}
+          <div className="px-4 py-4 flex flex-col items-center gap-3">
+            {/* Logo (2. görsel) */}
+            {product.media?.items?.[1]?.image?.url && (
+              <div className="flex justify-center">
+                <Image
+                  src={product.media.items[1].image.url}
+                  alt="Brand Logo"
+                  width={400}
+                  height={200}
+                  className="object-contain"
+                />
+              </div>
+            )}
+
+            {/* İsim */}
+            <span className="font-medium text-center">{product.name}</span>
+
+            {/* Fiyat / İndirimli Fiyat (yan yana) */}
+            {product.price?.discountedPrice ? (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-500 line-through text-sm">
+                  {product.price?.price}₺
+                </span>
+                <span className="font-bold text-lg text-gray-900">
+                  {product.price?.discountedPrice}₺
+                </span>
+              </div>
+            ) : (
+              <span className="font-semibold">{product.price?.price}₺</span>
+            )}
+          </div>
+
+          {/* AYIRICI ÇİZGİLER */}
+          <div className="mx-4 h-px bg-gray-200" />
+
+          {/* 3) BUTON */}
+          <div className="px-4 py-4 flex justify-center">
+            <button className="rounded-2xl ring-1 ring-lama py-2 px-4 w-max text-xs hover:bg-lama hover:text-white transition-colors">
+              Karta Ekle
+            </button>
+          </div>
+        </div>
+      </Link>
+    ))}
+
+    {(searchParams?.cat || searchParams?.name) && (
+      <Pagination
+        currentPage={res.currentPage || 0}
+        hasPrev={res.hasPrev()}
+        hasNext={res.hasNext()}
+      />
+    )}
   </div>
-)}
-      <div className="flex justify-between">
-        <span className="font-medium">{product.name}</span>
-        <span className="font-semi-bold">{product.price?.price}₺</span>
-      </div>
-
-      {/* Marka logosu (ribbon'a göre) */}
-    
-
-      {product.additionalInfoSections && (
-        <div
-          className="text-sm text-gray-500"
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(
-              product.description || "Ürün açıklaması bulunamadı."
-            ),
-          }}
-        />
-      )}
-
-      <button className="rounded-2xl ring-1 ring-lama py-2 px-4 w-max text-xs hover:bg-lama hover:text-white">
-        Karta Ekle
-      </button>
-    </Link>
-  ))}
-
-  {(searchParams?.cat || searchParams?.name) && (
-    <Pagination
-      currentPage={res.currentPage || 0}
-      hasPrev={res.hasPrev()}
-      hasNext={res.hasNext()}
-    />
-  )}
-</div>
-  );
+);
 };
 
 export default ProductList;

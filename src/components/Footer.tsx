@@ -13,9 +13,9 @@ const Footer = () => {
           <Link href="/">
             <div className='text-2xl tracking-wide'> OPTİKCE</div>
           </Link>
-          <p>Konyaaltı Caddesi No: 112, Daire: 5, Konyaaltı, Antalya 07070</p>
-          <span className='semi-bold'>dogac@eken.com.tr</span>
-          <span className='semi-bold'>0555 555 55 55</span>
+          <p>Yeşilbahçe Mah. Metin Kasapoğlu Cad. Yorgancıoğlu Apt. A Blok No:27/A Muratpaşa / ANTALYA</p>
+          <span className='semi-bold'>dgceken7@outlook.com</span>
+          <span className='semi-bold'>0507 213 41 81</span>
           <div className='flex gap-6'>
             <Image src="/facebook.png " alt='' width={16} height={16} />
             <Image src="/instagram.png " alt='' width={16} height={16} />
@@ -25,31 +25,30 @@ const Footer = () => {
           </div>
         </div>
         {/* CENTER  */}
-        <div className=' hidden lg:flex justify-between w-1/2'>
-        
-          <div className='flex flex-col justify-between'>
-            <h1 className='font-medium'>COMPANY</h1>
-            <div className='flex flex-col gap-6'>
-                <Link href="">About Us</Link>
-              <Link href="">Careers</Link>
-              <Link href="">Affiliates</Link>
-              <Link href="">Blog</Link>
-              <Link href="">Contact Us</Link>
-            </div>
-          </div>
+<div className="flex flex-row flex-wrap justify-center lg:justify-between w-full lg:w-1/2 gap-12 lg:gap-0 text-center lg:text-left">
+  <div className="flex flex-col gap-6 items-center lg:items-start mr-20">
+    <h1 className="font-medium">Şirket</h1>
+    <div className="flex flex-col gap-3 ">
+      <Link href="/">AnaSayfa</Link>
+      <Link href="/hakkimizda">Hakkımızda</Link>
+      <Link href="/urunler">Ürünler</Link>
+      <Link href="/iletisim">İletişim</Link>
+      <Link href="/mss">MSS</Link>
+      <Link href="/kvk">KVK</Link>
+    </div>
+  </div>
 
-            <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">SHOP</h1>
-            <div className="flex flex-col gap-6">
-              <Link href="">New Arrivals</Link>
-              <Link href="">Accessories</Link>
-              <Link href="">Men</Link>
-              <Link href="">Women</Link>
-              <Link href="">All Products</Link>
-            </div>
-          </div>
-
-        </div>
+  <div className="flex flex-col gap-6 items-center lg:items-start">
+    <h1 className="font-medium">Dükkan</h1>
+    <div className="flex flex-col gap-3">
+      <Link href="/yeni">Yeni Gelenler</Link>
+      <Link href="/kadin">Kadın</Link>
+      <Link href="/cocuk">Çocuk</Link>
+      <Link href="/erkek">Erkek</Link>
+      <Link href="/tum-urunler">Bütün Ürünler</Link>
+    </div>
+  </div>
+</div>
         {/* RIGHT */}
         <div className='w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8'>
           <h1 className='font-medium'>KATILIN</h1>

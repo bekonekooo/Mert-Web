@@ -31,15 +31,14 @@ const HomePage = async () => {
     <div className=''>
       <Slider/>
       <div className='mt-24  px-4 md:px-8 lg:px-16 px:32 2xl:px-64'>
-        <h1 className='text-2xl'>Sizin İçin Seçtiklerimiz</h1>
+        <h1 className='text-2xl text-center'>Sizin İçin Seçtiklerimiz</h1>
         <Suspense fallback={"Yükleniyor..."}   >
-        <ProductList  categoryId={process.env.FEATURED_PRODUCTS_CATEGORY_ID!} 
-         limit={4}
+        <ProductList limit={12} categoryId={process.env.FEATURED_PRODUCTS_CATEGORY_ID!}          
          />
         </Suspense>
       </div>
          <div className='mt-24   '>
-        <h1 className='text-2xl mt-24  px-4 md:px-8 lg:px-16 px:32 2xl:px-64 mb-12'>
+        <h1 className='text-2xl mt-24  px-4 md:px-8 lg:px-16 px:32 2xl:px-64 mb-12 text-center'>
           Kategoriler
           </h1>
           <Suspense fallback={"Yükleniyor..."}   >
