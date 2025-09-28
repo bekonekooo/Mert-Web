@@ -43,8 +43,8 @@ const ProductImages = ({ items }: { items?: any[] }) => {
           <Image
             src={logoItem.image.url}
             alt="Brand Logo"
-            width={120}
-            height={60}
+            width={40}
+            height={20}
             className="object-contain"
           />
         </div>

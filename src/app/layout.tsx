@@ -8,8 +8,8 @@ import { WixClientContextProvider } from "@/context/wixContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "OPTİKCE",
-  description: "Güvenle gözlük almanın en kolay adresi",
+  title: "BagnuCorakciAkademi",
+  description: "Hyatınız için ilk Adımı Atın",
     icons: {
     icon: [
       { url: "/favicon.ico?v=3", type: "image/x-icon" }, // ?v=3 cache-bust

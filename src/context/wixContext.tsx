@@ -16,8 +16,15 @@ const wixClient = createClient({
     currentCart,
     redirects
   },
-  auth: OAuthStrategy({
-    clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,
+  // auth: OAuthStrategy({
+  //   clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,
+  //   tokens: {
+  //     refreshToken,
+  //     accessToken: { value: "", expiresAt: 0 },
+  //   },
+  // }),
+   auth: OAuthStrategy({
+    clientId: "9b13e616-e40a-4aa3-ac39-481ceee3f41b",
     tokens: {
       refreshToken,
       accessToken: { value: "", expiresAt: 0 },

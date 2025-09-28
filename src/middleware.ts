@@ -9,9 +9,13 @@ export const middleware = async (request: NextRequest) => {
        return res
     }
     
+//     const wixClieent = createClient({
+//       auth: OAuthStrategy({
+//   clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,
+// }),
     const wixClieent = createClient({
       auth: OAuthStrategy({
-  clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,
+  clientId: "9b13e616-e40a-4aa3-ac39-481ceee3f41b",
 }),
         
     });

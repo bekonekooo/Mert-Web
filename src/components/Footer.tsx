@@ -31,23 +31,23 @@ const Footer = () => {
     <div className="flex flex-col gap-3 ">
       <Link href="/">AnaSayfa</Link>
       <Link href="/about">Hakkımızda</Link>
-      <Link href="/list">Ürünler</Link>
+      <Link href="/list">Seminerler</Link>
       <Link href="/contact">İletişim</Link>
       <Link href="/mss">MSS</Link>
       <Link href="/kvk">KVK</Link>
     </div>
   </div>
 
-  <div className="flex flex-col gap-6 items-center lg:items-start">
+  {/* <div className="flex flex-col gap-6 items-center lg:items-start">
     <h1 className="font-medium">Dükkan</h1>
     <div className="flex flex-col gap-3">
       <Link href="/list?cat=featured">Yeni Gelenler</Link>
       <Link href="/list?cat=woman">Kadın</Link>
       <Link href="/list?cat=kid">Çocuk</Link>
       <Link href="/list?cat=man">Erkek</Link>
-      <Link href="/list?cat=all-products">Bütün Ürünler</Link>
+      <Link href="/list?cat=all-products">Bütün Seminerler</Link>
     </div>
-  </div>
+  </div> */}
 </div>
         {/* RIGHT */}
         <div className='w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8'>

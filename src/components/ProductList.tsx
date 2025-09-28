@@ -185,19 +185,19 @@ return (
             )}
 
             <span className="font-medium text-center">{product.name}</span>
-
-            {product.price?.discountedPrice ? (
-              <div className="flex items-center gap-2">
-                <span className="text-gray-500 line-through text-sm">
-                  {product.price?.price}₺
-                </span>
-                <span className="font-bold text-lg text-gray-900">
-                  {product.price?.discountedPrice}₺
-                </span>
-              </div>
-            ) : (
-              <span className="font-semibold">{product.price?.price}₺</span>
-            )}
+{product.price?.discountedPrice &&
+ product.price.discountedPrice !== product.price.price ? (
+  <div className="flex items-center gap-2">
+    <span className="text-gray-500 line-through text-sm">
+      {product.price?.price}₺
+    </span>
+    <span className="font-bold text-lg text-gray-900">
+      {product.price?.discountedPrice}₺
+    </span>
+  </div>
+) : (
+  <span className="font-semibold">{product.price?.price}₺</span>
+)}
           </div>
 
           <div className="mx-4 h-px bg-gray-200" />
