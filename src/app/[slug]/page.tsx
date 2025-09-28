@@ -36,7 +36,13 @@ console.log(price,discountedPrice)
       {/* TEXTS */}
       <div className="w-full lg:w-1/2 flex flex-col gap-6">
         <h1 className="text-4xl font-medium">{product.name}</h1>
-        {/* <p className="text-gray-500">{product.description}</p> */}
+      {/* Ürün açıklaması */}
+{product.description && (
+  <div
+    className="text-gray-600 text-base leading-relaxed max-h-[50vh] overflow-y-auto pr-2"
+    dangerouslySetInnerHTML={{ __html: product.description }}
+  />
+)}
         <div className="h-[2px] bg-gray-100" />
         {product.price?.price === product.price?.discountedPrice ? (
           <h2 className="font-medium text-2xl">{product.price?.price}₺</h2>
@@ -81,7 +87,7 @@ console.log(price,discountedPrice)
 </div>
         <div className="h-[2px] bg-gray-100" />
         {/* REVIEWS */}
-        <h1 className="text-2xl">User Reviews</h1>
+        <h1 className="text-2xl">Kullanıcı Yorumları</h1>
         {/* <Suspense fallback="Loading...">
           <Reviews productId={product._id!} />
         </Suspense> */}
