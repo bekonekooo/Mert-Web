@@ -17,7 +17,7 @@ const CategoryList = async () => {
 
     switch (norm) {
       case "all products":
-        return "Bütün Ürünler";
+        return "Bütün Seminerler";
       case "featured":
         return "Sizin için Seçtiklerimiz";
       case "kid":
