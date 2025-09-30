@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { WixClientContextProvider } from "@/context/wixContext";
 import Whatsapp from "@/components/Whatsapp"; // 👈 ekledik
+import { ToastContainer } from "react-toastify"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <WixClientContextProvider>
           <Navbar />
           {children}
+           <ToastContainer position="top-right" autoClose={2000} />
           <Footer />
           <Whatsapp /> {/* 👈 her sayfada görünecek */}
         </WixClientContextProvider>

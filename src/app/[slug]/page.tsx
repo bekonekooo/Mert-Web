@@ -1,7 +1,7 @@
 import Add from "@/components/Add";
 import CustomizeProducts from "@/components/CustomizeProducts";
 import ProductImages from "@/components/ProductImages";
-// import Reviews from "@/components/Reviews"
+ import Reviews from "@/components/Reviews"
 import { wixClientServer } from "@/lib/wixClientServer";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -88,9 +88,9 @@ console.log(price,discountedPrice)
         <div className="h-[2px] bg-gray-100" />
         {/* REVIEWS */}
         <h1 className="text-2xl">Kullanıcı Yorumları</h1>
-        {/* <Suspense fallback="Loading...">
+        <Suspense fallback="Loading...">
           <Reviews productId={product._id!} />
-        </Suspense> */}
+        </Suspense>
       </div>
     </div>
   );

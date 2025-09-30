@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { useWixClient } from '@/hooks/useWixClient';
 import { useCartStore } from '@/hooks/useCartStore';
+import { toast } from "react-toastify"
 
 const Add = ({productId,variantId,stockNumber}:{
   productId: string;
@@ -24,6 +25,16 @@ const Add = ({productId,variantId,stockNumber}:{
       setQuantity((prev) => prev + 1);
     }
   };
+
+    const handleAddToCart = async () => {
+    try {
+      await addItem(wixClient, productId, variantId, quantity)
+      toast.success("Ürün sepete eklendi ✅")
+    } catch (error) {
+      toast.error("Ürün eklenirken bir hata oluştu ❌")
+    }
+  }
+
 
   const wixClient = useWixClient();
 
@@ -50,7 +61,7 @@ return (
       </div>
       
         <button 
-        onClick={()=> addItem(wixClient,productId,variantId,quantity)}
+        onClick={handleAddToCart}
         disabled={isLoading }
           className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 hover:bg-lama hover:text-white
               disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-white disabled:ring-none disabled:ring-0"

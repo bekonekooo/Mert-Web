@@ -33,7 +33,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-purple-500 to-pink-500 opacity-20 blur-2xl transition-opacity group-hover:opacity-30" />
               <div className="relative h-72 w-72 overflow-hidden rounded-3xl ring-1 ring-black/10 shadow-2xl md:h-[28rem] md:w-96">
                 <Image
-                  src="/woman.png" // kendi görselini buraya koy
+                  src="/bagnu3.jpeg" // kendi görselini buraya koy
                   alt="Bağnu Çorakçı"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
