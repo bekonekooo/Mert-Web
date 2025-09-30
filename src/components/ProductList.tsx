@@ -211,14 +211,14 @@ return (
         </div>
       </Link>
     ))}
-
-    {(searchParams?.cat || searchParams?.name) && (
+  
+    {/* {(searchParams?.cat || searchParams?.name) && (
       <Pagination
         currentPage={res.currentPage || 0}
         hasPrev={res.hasPrev()}
         hasNext={res.hasNext()}
       />
-    )}
+    )} */}
   </div>
 );
 };

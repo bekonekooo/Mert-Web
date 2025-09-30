@@ -35,45 +35,39 @@ const CategoryList = async () => {
 
   return (
     <div className="px-4">
-      {/* YATAY SCROLL WRAPPER */}
-      <div
-        className="
-          flex gap-4 overflow-x-auto
-          snap-x snap-mandatory
-          -mx-4 px-4
-        "
-        style={{ WebkitOverflowScrolling: "touch" }} // iOS momentum
-      >
-        {categories.map((item: any) => {
-          const href = `/list?cat=${encodeURIComponent(item?.slug || "")}`;
-          const imgSrc =
-            item?.media?.mainMedia?.image?.url && item.media.mainMedia.image.url.startsWith("http")
-              ? item.media.mainMedia.image.url
-              : "/cart.png";
+      {/* ORTALI GRID WRAPPER */}
+      <div className="flex justify-center gap-6 flex-wrap">
+        {categories
+          .filter((item: any) => item?.name?.toLowerCase() !== "all products") // "all products" gizle
+          .map((item: any) => {
+            const href = `/list?cat=${encodeURIComponent(item?.slug || "")}`;
+            const imgSrc =
+              item?.media?.mainMedia?.image?.url &&
+              item.media.mainMedia.image.url.startsWith("http")
+                ? item.media.mainMedia.image.url
+                : "/cart.png";
 
-          return (
-            <Link
-              href={href}
-              key={item?._id || item?.id || item?.slug}
-              className="shrink-0 snap-center min-w-[260px] sm:min-w-[320px] md:min-w-[360px]"
-            >
-              <div className="relative bg-slate-200 rounded-xl w-full aspect-[4/3]">
-                <Image
-                  src={imgSrc}
-                  alt={displayName(item?.name)}
-                  fill
-                  sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 360px"
-                  className="object-cover rounded-xl"
-                  // Wix 400 hatası görürsen şu satırı aç:
-                  // unoptimized
-                />
-              </div>
-              <h1 className="mt-3 text-center font-light text-lg tracking-wide">
-                {displayName(item?.name)}
-              </h1>
-            </Link>
-          );
-        })}
+            return (
+              <Link
+                href={href}
+                key={item?._id || item?.id || item?.slug}
+                className="shrink-0 w-[260px] sm:w-[300px] md:w-[340px]"
+              >
+                <div className="relative bg-slate-200 rounded-xl w-full aspect-[4/3]">
+                  <Image
+                    src={imgSrc}
+                    alt={displayName(item?.name)}
+                    fill
+                    sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 360px"
+                    className="object-cover rounded-xl"
+                  />
+                </div>
+                <h1 className="mt-3 text-center font-light text-lg tracking-wide">
+                  {displayName(item?.name)}
+                </h1>
+              </Link>
+            );
+          })}
       </div>
     </div>
   );

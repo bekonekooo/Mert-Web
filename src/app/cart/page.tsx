@@ -9,11 +9,13 @@ import { media as wixMedia } from "@wix/sdk";
 import { currentCart } from "@wix/ecom";
 import { useWixClient } from "@/hooks/useWixClient";
 import { useCartStore } from "@/hooks/useCartStore";
+import { useRouter } from 'next/navigation'; // ✅ doğru import
 
 export default function CartPage() {
   const wixClient = useWixClient();
   const { cart, isLoading, getCart, removeItem } = useCartStore();
   const [estimating, setEstimating] = useState(false);
+  const router = useRouter(); // ✅ router tanımlandı
   const [estTotals, setEstTotals] = useState<{
     subtotal?: number;
     total?: number;
@@ -218,7 +220,8 @@ const toNum = (v: unknown, fb = 0) => {
             <button
               className="w-full mt-4 rounded-md bg-black text-white py-3 disabled:opacity-70"
               disabled={isLoading || !hasItems}
-              onClick={handleCheckout}
+            //  onClick={() => router.push("/checkout")}
+            onClick={handleCheckout}
             >
               Ödemeye Geçiş
             </button>

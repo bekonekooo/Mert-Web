@@ -6,30 +6,30 @@ import Image from "next/image";
 
 
 const slides = [
-  {
-    id: 1,
-    title: "Yaz Koleksiyonlar",
-    description: "%40 a Kadar İndirim",
-    img: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
-    url: "/list",
-    bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
-  },
-  {
-    id: 2,
-    title: "Kış Koleksiyonlar",
-    description: "%35 a Kadar İndirim",
-    img: "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=800",
-    url: "/list",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50",
-  },
-  {
-    id: 3,
-    title: "Bahar Koleksiyonlar",
-    description: "%30 a Kadar İndirim",
-    img: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
-    url: "/list",
-    bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
-  },
+{
+  id: 1,
+  title: "Kendini Keşfet",
+  description: "Hayatında %100 Dönüşüm İçin İlk Adım",
+  img: "/bagnu1.jpeg",
+  url: "/list",
+  bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
+},
+{
+  id: 2,
+  title: "İçsel Gücünü Harekete Geçir",
+  description: "Sınırlardan Özgürlüğe Yolculuk",
+  img: "/bagnu2.jpeg",
+  url: "/list",
+  bg: "bg-gradient-to-r from-pink-50 to-blue-50",
+},
+{
+  id: 3,
+  title: "Denge ve Uyum",
+  description: "Zihin, Beden ve Ruh Birlikte",
+  img: "/bagnu3.jpeg",
+  url: "/list",
+  bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
+},
 ];
 
 
@@ -67,7 +67,7 @@ const Slider = () => {
               </h1>
               <Link href={slide.url}>
                 <button className="rounded-md bg-black text-white py-3 px-4">
-                  Alışveriş Yap
+                  Seminerlere  Göz At
                 </button>
               </Link>
             </div>

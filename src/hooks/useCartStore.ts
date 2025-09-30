@@ -14,6 +14,8 @@ type CartState = {
     quantity: number
   ) => void;
   removeItem: (wixClient: WixClient, itemId: string) => void;
+
+ 
 };
 
 export const useCartStore = create<CartState>((set) => ({

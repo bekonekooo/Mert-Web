@@ -40,7 +40,7 @@ return (
           <button className="cursor-pointer text-xl" onClick={()=>handleQuantity("i")} >+</button>
         </div>
        { stockNumber < 1 ? (
-        <div className='text-xs'> Ürünün Stoğu bitti</div>
+        <div className='text-xs'> </div>
 
        ) : (<div className="text-xs">
           <span className="text-orange-500">{stockNumber}</span> Adet <br />

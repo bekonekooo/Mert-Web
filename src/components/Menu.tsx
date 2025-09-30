@@ -10,7 +10,7 @@ import { useCartStore } from "@/hooks/useCartStore";
 
 const LINKS = [
   { href: "/", label: "AnaSayfa" },
-  { href: "/list", label: "Gözlükler" },     // gerekirse rotaları kendine göre değiştir
+  { href: "/list?cat=seminerler", label: "Seminerler" },     // gerekirse rotaları kendine göre değiştir
  
   { href: "/about", label: "Hakkımızda" },
   { href: "/contact", label: "İletişim" },

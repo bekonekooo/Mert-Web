@@ -91,7 +91,7 @@ const CartModel = () => {
           <div>
             <div className='flex items-center justify-between font-semibold'>
               <span>Toplam</span>
-              <span>{(cart as any).subtotal?.amount}$</span>
+              <span>{(cart as any).subtotal?.amount} ₺ </span>
             </div>
             <p className='text-gray-500 text-sm mt-2 mb-4'>
               Kargo ve Vergiler Ödemede hesaplanıcakdır
@@ -106,6 +106,7 @@ const CartModel = () => {
               <button
                 className='rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opacity-75'
                 disabled={isLoading}
+                // onClick={() => router.push("/checkout")}
                 onClick={handleCheckout}
               >
                 Ödemeye Geçiş

@@ -317,7 +317,7 @@ export default function Filter({ infoTitles = [] }: FilterProps) {
           value={get("sort")}
           onChange={handleFilterChange}
         >
-          <option value="">Sort By</option>
+          <option value="">Sırala</option>
           <option value="asc price">Fiyat (düşük den yükseğe)</option>
           <option value="desc price">Fiyat (yüksek den düşüge)</option>
           <option value="desc lastUpdated">En Yeni</option>
