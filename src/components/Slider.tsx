@@ -4,32 +4,31 @@ import { useEffect, useState } from "react";
 import  Link  from 'next/link';
 import Image from "next/image";
 
-
 const slides = [
-{
-  id: 1,
-  title: "Kendini Keşfet",
-  description: "Hayatında %100 Dönüşüm İçin İlk Adım",
-  img: "/mert1.jpg",
-  url: "/list",
-  bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
-},
-{
-  id: 2,
-  title: "İçsel Gücünü Harekete Geçir",
-  description: "Sınırlardan Özgürlüğe Yolculuk",
-  img: "/mert3.jpg",
-  url: "/list",
-  bg: "bg-gradient-to-r from-pink-50 to-blue-50",
-},
-{
-  id: 3,
-  title: "Denge ve Uyum",
-  description: "Zihin, Beden ve Ruh Birlikte",
-  img: "/mert2.jpg",
-  url: "/list",
-  bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
-},
+  {
+    id: 1,
+    title: "El Dokuması Zarafet",
+    description: "Her ilmeğinde ustalık, her deseninde hikaye taşıyan halılar.",
+    img: "/mert1.jpg",
+    url: "/list",
+    bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
+  },
+  {
+    id: 2,
+    title: "Kişiye Özel Tasarımlar",
+    description: "Evinizin tarzına ve ruhuna özel tasarlanmış halılarla fark yaratın.",
+    img: "/mert3.jpg",
+    url: "/list",
+    bg: "bg-gradient-to-r from-pink-50 to-blue-50",
+  },
+  {
+    id: 3,
+    title: "Zamana Meydan Okuyan Kalite",
+    description: "Geleneksel dokuma teknikleriyle modern yaşam alanlarına estetik dokunuş.",
+    img: "/mert2.jpg",
+    url: "/list",
+    bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
+  },
 ];
 
 
@@ -67,7 +66,7 @@ const Slider = () => {
               </h1>
               <Link href={slide.url}>
                 <button className="rounded-md bg-black text-white py-3 px-4">
-                  Seminerlere  Göz At
+                  Ürünlere Göz At!!
                 </button>
               </Link>
             </div>
