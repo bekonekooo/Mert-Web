@@ -41,7 +41,7 @@ const ListPage = async ({ searchParams }: { searchParams: Record<string, string>
     </div>
     <div className="relative w-full sm:w-1/3 h-40 sm:h-full mt-4 sm:mt-0">
       <Image
-        src="/bagnu2.jpeg"
+        src="/mert3.jpg"
         alt="Kişisel Gelişim Semineri"
         fill
         className="object-contain"

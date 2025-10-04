@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-5">
   <Link href="/">
     <Image
-      src="/bagnuSOnLogo.png" // kendi logo dosyanın yolunu yaz
+      src="/pafLogo.png" // kendi logo dosyanın yolunu yaz
       alt="Logo"
       width={140}
       height={40}
@@ -21,9 +21,9 @@ const Footer = () => {
   </Link>
   <p>
     {/* Yeşilbahçe Mah. Metin Kasapoğlu Cad. Yorgancıoğlu Apt. A Blok No:27/A */}
-    Muratpaşa / ANTALYA
+    Muratpaşa / ANKARA
   </p>
-  <span className="font-semibold">banucorakci@hotmail.com</span>
+  <span className="font-semibold">berkayyaydin@gmail.com</span>
   <span className="font-semibold">+90 530 303 04 98</span>
   <div className="flex gap-6">
     <Image src="/facebook.png" alt="Facebook" width={16} height={16} />
@@ -40,7 +40,7 @@ const Footer = () => {
     <div className="flex flex-col gap-3 ">
       <Link href="/">AnaSayfa</Link>
       <Link href="/about">Hakkımızda</Link>
-      <Link href="/list">Seminerler</Link>
+      <Link href="/list">Halılar</Link>
       <Link href="/contact">İletişim</Link>
       <Link href="/mss">MSS</Link>
       <Link href="/kvk">KVK</Link>
@@ -84,7 +84,7 @@ const Footer = () => {
       </div>
       {/* BOTTOM */}
       <div className='flex flex-col md:flex-row items-center justify-between gap-8 mt-16'>
-        <div className=''>© 2025 BagnuCorakciAkademi</div>
+        <div className=''>© 2025 PafTuft</div>
         <div className=' flex flex-col gap-8 md:flex-row'>
           <div className=''>
             <span className='text-gray-500 mr-4'>Dil</span>

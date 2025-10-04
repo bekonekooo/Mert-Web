@@ -10,8 +10,8 @@ import { ToastContainer } from "react-toastify"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "BagnuCorakciAkademi",
-  description: "Hyatınız için ilk Adımı Atın",
+  title: "paftuft",
+  description: "Custom Halılar",
   icons: {
     icon: [
       { url: "/favicon.ico?v=3", type: "image/x-icon" },
