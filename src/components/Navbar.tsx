@@ -30,7 +30,7 @@ const Navbar = () => {
             </Link>   
             <div className='hidden xl:flex gap-4 '>
                  <Link href="/" >AnaSayfa</Link>
-                    <Link href="/list" >Seminerler</Link>
+                    <Link href="/list" >Halılar</Link>
                     {/* <Link href="/" >Deals</Link> */}
                     <Link href="/about" >Hakkımızda</Link>
                     <Link href="/contact" >İletişim</Link>

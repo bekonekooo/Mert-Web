@@ -24,7 +24,7 @@ const wixClient = createClient({
   //   },
   // }),
    auth: OAuthStrategy({
-    clientId: "9b13e616-e40a-4aa3-ac39-481ceee3f41b",
+    clientId: "ff0a6f69-9090-48a8-8236-5a7d33227c62",
     tokens: {
       refreshToken,
       accessToken: { value: "", expiresAt: 0 },

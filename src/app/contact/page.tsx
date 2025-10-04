@@ -15,10 +15,10 @@ const ContactPage = () => {
           className="text-center"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">
-            Bize Ulaşın
+            İletişim
           </h1>
           <p className="mt-3 text-gray-600 text-lg md:text-xl">
-            Sorularınız ve randevularınız için bizimle iletişime geçebilirsiniz.
+            Projeleriniz, iş birliği fırsatları veya sorularınız için bizimle iletişime geçin.
           </p>
         </motion.div>
 
@@ -35,47 +35,46 @@ const ContactPage = () => {
 
             <p className="text-gray-600">
               <strong>Adres:</strong>{" "}
-              Yeşilbahçe Mah. Metin Kasapoğlu Cad. Yorgancıoğlu Apt. A Blok No:27/A
-              Muratpaşa / ANTALYA
+              Ankara, Türkiye
             </p>
 
             <p className="text-gray-600">
               <strong>Telefon:</strong>{" "}
-              <a href="tel:+905303030498" className="text-purple-600 hover:underline">
-                +90 530 303 04 98
+              <a href="tel:+905417146360" className="text-blue-600 hover:underline">
+                +90 541 714 63 60
               </a>
             </p>
 
             <p className="text-gray-600">
               <strong>Email:</strong>{" "}
               <a
-                href="mailto:banucorakci@hotmail.com"
-                className="text-purple-600 hover:underline break-all"
+                href="mailto:berkayyaydin@gmail.com"
+                className="text-blue-600 hover:underline break-all"
               >
-                banucorakci@hotmail.com
+                berkayyaydin@gmail.com
               </a>
             </p>
 
-            {/* Form (değiştirmedim) */}
+            {/* Form */}
             <form className="space-y-4">
               <input
                 type="text"
                 placeholder="Adınız"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-300 outline-none transition"
+                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-300 outline-none transition"
               />
               <input
                 type="email"
                 placeholder="E-posta"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-300 outline-none transition"
+                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-300 outline-none transition"
               />
               <textarea
                 placeholder="Mesajınız"
                 rows={5}
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-300 outline-none transition"
+                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-300 outline-none transition"
               ></textarea>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white py-3 rounded-xl font-medium hover:scale-105 transform transition"
+                className="w-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-3 rounded-xl font-medium hover:scale-105 transform transition"
               >
                 Gönder
               </button>
@@ -90,8 +89,7 @@ const ContactPage = () => {
             className="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow h-[450px] md:h-[500px]"
           >
             <iframe
-              // Antalya / Muratpaşa için basit arama embed
-              src="https://www.google.com/maps?q=Ye%C5%9Filbah%C3%A7e%20Mah.%20Metin%20Kasapo%C4%9Flu%20Cad.%20Yorganc%C4%B1o%C4%9Flu%20Apt.%20A%20Blok%20No:27/A%20Muratpa%C5%9Fa%20Antalya&z=16&output=embed"
+              src="https://www.google.com/maps?q=Ankara%20Türkiye&z=13&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

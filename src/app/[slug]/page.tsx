@@ -88,9 +88,9 @@ console.log(price,discountedPrice)
         <div className="h-[2px] bg-gray-100" />
         {/* REVIEWS */}
         <h1 className="text-2xl">Kullanıcı Yorumları</h1>
-        <Suspense fallback="Loading...">
+        {/* <Suspense fallback="Loading...">
           <Reviews productId={product._id!} />
-        </Suspense>
+        </Suspense> */}
       </div>
     </div>
   );
